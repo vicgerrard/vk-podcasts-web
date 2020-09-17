@@ -12,7 +12,7 @@ import PodcastPrivacy from "./panels/PodcastPrivacy";
 import EditPodcast from "./panels/EditPodcast";
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('edit-podcast');
+	const [activePanel, setActivePanel] = useState('home');
 
 	const go = e => {
 		setActivePanel(e.currentTarget.dataset.to);
