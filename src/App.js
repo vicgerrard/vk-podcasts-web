@@ -5,37 +5,25 @@ import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenS
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-import Persik from './panels/Persik';
+import CreatePodcast from "./panels/CreatePodcast";
+import PodcastPreview from "./panels/PodcastPreview";
+import PodcastCreated from "./panels/PodcastCreated";
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
-	useEffect(() => {
-		bridge.subscribe(({ detail: { type, data }}) => {
-			if (type === 'VKWebAppUpdateConfig') {
-				const schemeAttribute = document.createAttribute('scheme');
-				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
-				document.body.attributes.setNamedItem(schemeAttribute);
-			}
-		});
-		async function fetchData() {
-			const user = await bridge.send('VKWebAppGetUserInfo');
-			setUser(user);
-			setPopout(null);
-		}
-		fetchData();
-	}, []);
-
 	const go = e => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
 
 	return (
-		<View activePanel={activePanel} popout={popout}>
-			<Home id='home' fetchedUser={fetchedUser} go={go} />
-			<Persik id='persik' go={go} />
+		<View activePanel={activePanel} popout={null}>
+			<Home id='home' go={go} />
+			<CreatePodcast id='create-podcast' go={go} />
+			<PodcastPreview id='podcast-preview' go={go} />
+			<PodcastCreated id='podcast-created' go={go} />
 		</View>
 	);
 }
