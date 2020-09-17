@@ -27,7 +27,7 @@ const osName = platform();
 const PodcastPreview = props => (
     <Panel id={props.id}>
         <PanelHeader
-            left={<PanelHeaderButton onClick={props.go} data-to="create-podcast ">
+            left={<PanelHeaderButton onClick={props.go} data-to="create-podcast">
                 {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
             </PanelHeaderButton>}
         >

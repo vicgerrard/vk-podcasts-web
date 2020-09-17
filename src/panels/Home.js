@@ -18,7 +18,7 @@ const Home = ({ id, go }) => (
 			icon={<Icon56AddCircleOutline />}
 			header="Добавьте первый подкаст"
 			action={<Button size="l" onClick={go} data-to="create-podcast">Добавить подкаст</Button>}
-			className="start-screen-placeholder"
+			stretched
 		>
 			Добавляйте, редактируйте и делитесь подкастами вашего сообщества.
 		</Placeholder>
